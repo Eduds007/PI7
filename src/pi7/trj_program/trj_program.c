@@ -26,7 +26,7 @@ void tpr_init() {
 
   for (i=0; i<MAX_PROGRAM_LINES;i++) {
 	  tpr_program[i].x = 0;
-	  tpr_program[i].y = 0;
+	  tpr_program[i].y = i*0.5;
 	  tpr_program[i].z = 0;
   }
 } //tpr_init
