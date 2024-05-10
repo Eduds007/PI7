@@ -57,7 +57,8 @@ const portTickType DELAY_200MS = 200 / portTICK_RATE_MS;
  * Communication queues for data transfer between components
  */
 QueueHandle_t qControlCommands;
-QueueHandle_t qCommPIC;
+QueueHandle_t qCommPIC1;
+QueueHandle_t qCommPIC2;
 QueueHandle_t qCommDev; // para testes
 
 #define USERTASK_STACK_SIZE configMINIMAL_STACK_SIZE
@@ -65,7 +66,7 @@ QueueHandle_t qCommDev; // para testes
 void taskController(void *pvParameters) {
   while(1) {
     
-    printf("1"); // [jo:231005] teste
+    // printf("1"); // [jo:231005] teste
 
     com_executeCommunication(); //internally, it calls Controller to process events
     vTaskDelay(DELAY_200MS); // [jo:230929] TODO: por que não tem vTaskDelay() ? -> não, tem espera na fila
@@ -85,7 +86,7 @@ void taskNCProcessing(void *pvParameters) {
   lastWakeTime = xTaskGetTickCount();
   while(1) {
 
-    printf("2"); // [jo:231005] teste
+    // printf("2"); // [jo:231005] teste
 
     data.command = NO_CMD;
     xQueueReceive(qControlCommands, &data, 0); //do not wait for command
@@ -102,16 +103,19 @@ void taskNCProcessing(void *pvParameters) {
  * and send them following PIC protocol
  */
 void taskCommPIC(void *pvParameters) {
-	pic_Data setpoints;
+	pic_Data setpoints1;
+	pic_Data setpoints2;
+
 	while(1) {
             
     //uart_putc_raw(uart0, '3'); // [jo:231004] teste
     // UARTSend(0, (uint8_t*)"3", 1); // [jo:231004] teste
     // UARTSend(1, (uint8_t*)"3", 1); // [jo:231004] teste
 
-    xQueueReceive(qCommPIC, &setpoints, pdMS_TO_TICKS(250)); // portMAX_DELAY); // [jo:231004] 250 ms no meu teste
-    pic_sendToPIC(0, setpoints);
-    pic_sendToPIC(1, setpoints);
+    if (xQueueReceive(qCommPIC1, &setpoints1, pdMS_TO_TICKS(250)) == pdPASS)
+      pic_sendToPIC(0, setpoints1); // portMAX_DELAY); // [jo:231004] 250 ms no meu teste
+    if (xQueueReceive(qCommPIC2, &setpoints2, pdMS_TO_TICKS(250)) == pdPASS)
+      pic_sendToPIC(1, setpoints2); // portMAX_DELAY); // [jo:231004] 250 ms no meu teste
     //vTaskDelay(DELAY_200MS); // [jo:230928] eu coloquei, precisa?
   } //task loop
 } // taskCommPIC
@@ -148,7 +152,8 @@ static void initComponents(void) {
 
   // communication between tasks
   qControlCommands = xQueueCreate(CONTROL_Q_SIZE, sizeof(tpr_Data));
-  qCommPIC = xQueueCreate(PIC_Q_SIZE, sizeof(pic_Data));
+  qCommPIC1 = xQueueCreate(PIC_Q_SIZE, sizeof(pic_Data));
+  qCommPIC2 = xQueueCreate(PIC_Q_SIZE, sizeof(pic_Data));
   qCommDev = xQueueCreate(DEV_Q_SIZE, sizeof(char));
 
   // init components
