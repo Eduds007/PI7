@@ -10,6 +10,7 @@
 #include "queue.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 // Header files for PI7
 #include "trj_control.h"
@@ -20,6 +21,17 @@
 // local variables
 int tcl_status;
 extern xQueueHandle qCommPIC;
+
+float *inverse_kin(float x, float y){
+  float theta= (float)malloc(2 * sizeof(float));
+  if (x*x+y*y >= 0 && x*x+y*y <=400){
+    float theta2 = acos((x*x+y*y-L1*L1-L2*L2)/(2*L1*L2));
+    theta[1]=theta2;
+    float tanY = L2*sin(theta2)/(L1+L2*cos(theta2));
+    theta[0] = atan((y-x*tanY)/(x+y*tanY));
+  }
+  return theta;
+}
 
 void tcl_generateSetpoint() {
 

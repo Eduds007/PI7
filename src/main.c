@@ -106,8 +106,8 @@ void taskCommPIC(void *pvParameters) {
 	while(1) {
             
     //uart_putc_raw(uart0, '3'); // [jo:231004] teste
-    UARTSend(0, (uint8_t*)"3", 1); // [jo:231004] teste
-    UARTSend(1, (uint8_t*)"3", 1); // [jo:231004] teste
+    // UARTSend(0, (uint8_t*)"3", 1); // [jo:231004] teste
+    // UARTSend(1, (uint8_t*)"3", 1); // [jo:231004] teste
 
     xQueueReceive(qCommPIC, &setpoints, pdMS_TO_TICKS(250)); // portMAX_DELAY); // [jo:231004] 250 ms no meu teste
     pic_sendToPIC(0, setpoints);
