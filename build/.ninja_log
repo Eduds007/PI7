@@ -1,0 +1,23 @@
+# ninja log v6
+39	56	1715833576793441084	src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update	bba1b392dcd95a92
+39	43	1715833576780107251	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin	18098646f63352dc
+56	76	1715833576810108374	src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch	13efeab17c4bc5c6
+39	43	1715833576780107251	pico-sdk/src/rp2_common/boot_stage2/bs2_default.bin	18098646f63352dc
+23	39	1715833576773440335	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download	1acd5a6eb3ccbfca
+7	23	1715833576760106504	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir	d50a3eadc93b466d
+7	23	1715833576760106504	src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir	843a631d6874b9be
+23	39	1715833576773440335	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download	570d1458eb29ab66
+7	23	1715833576760106504	pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir	d50a3eadc93b466d
+43	77	1715833576810108374	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S	9b34c11ec1952bff
+43	77	1715833576810108374	pico-sdk/src/rp2_common/boot_stage2/bs2_default_padded_checksummed.S	9b34c11ec1952bff
+58	78	1715833576813441832	pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch	eb4329f7b969c29b
+39	58	1715833576793441084	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update	4a2cbcb886d5cff6
+23	39	1715833576773440335	src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download	570d1458eb29ab66
+20	39	1715833576756773046	pico-sdk/src/rp2_common/boot_stage2/bs2_default.elf	9b9a7970fe356515
+58	78	1715833576813441832	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch	eb4329f7b969c29b
+39	58	1715833576793441084	pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update	4a2cbcb886d5cff6
+56	76	1715833576810108374	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch	13efeab17c4bc5c6
+39	56	1715833576793441084	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update	bba1b392dcd95a92
+7	20	1715833576743439213	pico-sdk/src/rp2_common/boot_stage2/CMakeFiles/bs2_default.dir/compile_time_choice.S.obj	a1291fe5fff6ecbf
+7	23	1715833576760106504	/home/caesarvictor/Documentos/poli/PI7/PicoW-pi7/build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir	843a631d6874b9be
+23	39	1715833576773440335	pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download	1acd5a6eb3ccbfca

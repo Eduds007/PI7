@@ -219,7 +219,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "28"
+			"value" : "29"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -1311,7 +1311,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/dot"
+			"value" : "DOXYGEN_DOT_EXECUTABLE-NOTFOUND"
 		},
 		{
 			"name" : "DOXYGEN_EXECUTABLE",
@@ -1351,7 +1351,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "[/usr/bin/python3.11][cfound components: Interpreter ][v3.11.8()]"
+			"value" : "[/usr/bin/python3.12][cfound components: Interpreter ][v3.12.3()]"
 		},
 		{
 			"name" : "FREERTOS_KERNEL_PATH",
@@ -1555,7 +1555,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : " /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs"
+			"value" : " /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/cmsis /home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2040/hardware_regs"
 		},
 		{
 			"name" : "PICO_DOXYGEN_PATHS",
@@ -1783,7 +1783,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/usr/bin/python3.11"
+			"value" : "/usr/bin/python3.12"
 		},
 		{
 			"name" : "_Python3_INTERPRETER_PROPERTIES",
@@ -1795,7 +1795,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "Python;3;11;8;32;64;;;abi3;/usr/lib/python3.11;/usr/lib/python3.11;/usr/lib/python3.11/site-packages;/usr/lib/python3.11/site-packages"
+			"value" : "Python;3;12;3;32;64;;;abi3;/usr/lib/python3.12;/usr/lib/python3.12;/usr/lib/python3.12/site-packages;/usr/lib/python3.12/site-packages"
 		},
 		{
 			"name" : "_Python3_INTERPRETER_SIGNATURE",
@@ -1807,7 +1807,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c5ea8e56613f13ab5e55239a52af8d00"
+			"value" : "f811b8a062a8994e96ffe87747bf9bfe"
 		},
 		{
 			"name" : "_Python3_NumPy_REASON_FAILURE",

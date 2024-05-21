@@ -70,7 +70,7 @@ void tcl_generateSetpoint() {
     float tanY = L2*sin(theta[1])/(L1+L2*cos(theta[1]));
     theta[0] = atan((line.y-line.x*tanY)/(line.x+line.y*tanY));
   }
-  printf("Theta1: %f, Theta2:%f\n", theta[0], theta[1]);
+  printf("Theta1: %f, Theta2:%f\n", theta[0]/0.017453293, theta[1]/0.017453293);
   
   toPic1.setPoint1 = L1*cos(theta[1]);
   toPic1.setPoint2 = L1*sin(theta[1]);

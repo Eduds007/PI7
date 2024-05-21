@@ -7,37 +7,38 @@
 			"add_custom_target",
 			"ExternalProject_Add",
 			"find_package",
-			"_pico_init_pioasm",
-			"pico_generate_pio_header"
+			"pico_add_uf2_output",
+			"pico_add_extra_outputs"
 		],
 		"files" : 
 		[
 			"/usr/share/cmake/Modules/ExternalProject.cmake",
-			"/home/caesarvictor/Documentos/poli/PI7/pico-sdk/tools/FindPioasm.cmake",
+			"/home/caesarvictor/Documentos/poli/PI7/pico-sdk/tools/FindELF2UF2.cmake",
 			"/home/caesarvictor/Documentos/poli/PI7/pico-sdk/tools/CMakeLists.txt",
-			"/home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeLists.txt"
+			"/home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common.cmake",
+			"src/CMakeLists.txt"
 		],
 		"nodes" : 
 		[
 			{
-				"file" : 3
+				"file" : 4
 			},
 			{
 				"command" : 4,
-				"file" : 3,
-				"line" : 50,
+				"file" : 4,
+				"line" : 35,
 				"parent" : 0
 			},
 			{
 				"command" : 3,
-				"file" : 2,
-				"line" : 17,
+				"file" : 3,
+				"line" : 47,
 				"parent" : 1
 			},
 			{
 				"command" : 2,
 				"file" : 2,
-				"line" : 10,
+				"line" : 68,
 				"parent" : 2
 			},
 			{
@@ -47,27 +48,27 @@
 			{
 				"command" : 1,
 				"file" : 1,
-				"line" : 27,
+				"line" : 26,
 				"parent" : 4
 			},
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 4201,
+				"line" : 4239,
 				"parent" : 5
 			}
 		]
 	},
 	"folder" : 
 	{
-		"name" : "ExternalProjectTargets/PioasmBuild"
+		"name" : "ExternalProjectTargets/ELF2UF2Build"
 	},
-	"id" : "PioasmBuild::@c2fb4f534018e64680d5",
-	"name" : "PioasmBuild",
+	"id" : "ELF2UF2Build::@145eef247bfb46b6828c",
+	"name" : "ELF2UF2Build",
 	"paths" : 
 	{
-		"build" : "pico-sdk/src/rp2_common/pico_cyw43_driver",
-		"source" : "/home/caesarvictor/Documentos/poli/PI7/pico-sdk/src/rp2_common/pico_cyw43_driver"
+		"build" : "src",
+		"source" : "src"
 	},
 	"sourceGroups" : 
 	[
@@ -99,61 +100,61 @@
 		{
 			"backtrace" : 6,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild",
+			"path" : "build/src/CMakeFiles/ELF2UF2Build",
 			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild.rule",
+			"path" : "build/src/CMakeFiles/ELF2UF2Build.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/CMakeFiles/PioasmBuild-complete.rule",
+			"path" : "build/src/CMakeFiles/ELF2UF2Build-complete.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-build.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-build.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-configure.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-configure.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-download.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-download.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-install.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-install.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-mkdir.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-mkdir.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-patch.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-patch.rule",
 			"sourceGroupIndex" : 1
 		},
 		{
 			"backtrace" : 0,
 			"isGenerated" : true,
-			"path" : "build/pico-sdk/src/rp2_common/pico_cyw43_driver/pioasm/src/PioasmBuild-stamp/PioasmBuild-update.rule",
+			"path" : "build/src/elf2uf2/src/ELF2UF2Build-stamp/ELF2UF2Build-update.rule",
 			"sourceGroupIndex" : 1
 		}
 	],
