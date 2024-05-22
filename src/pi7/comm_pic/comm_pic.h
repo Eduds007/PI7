@@ -9,9 +9,11 @@
 #include <stdint.h>
 
 typedef struct {
-	float setPoint1;
-	float setPoint2;
-	float setPoint3;
+	char SOT;
+	char ADD;
+	char COM;
+	float VAL;
+	char EOT; 
 } pic_Data;
 
 void pic_init(void);

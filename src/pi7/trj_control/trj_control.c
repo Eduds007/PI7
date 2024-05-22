@@ -28,6 +28,7 @@ extern xQueueHandle qControlCommands;
 
 #define L1 17
 #define L2 20
+#define M_PI 3.14159265358979323846
 
 // float *inverse_kin(float x, float y){
 //   float theta= (float)malloc(2 * sizeof(float));
@@ -40,14 +41,10 @@ extern xQueueHandle qControlCommands;
 //   return theta;
 // }
 
-
-
 //manda para o PIC um setpoint
 void tcl_generateSetpoint() {
 
   // TODO: implementar
-
-  float theta[2]= {0.0, 0.0};
 
   int currLine; 
   tpr_Data line;
@@ -65,23 +62,36 @@ void tcl_generateSetpoint() {
   printf("Setpoint: %f %f %f\n", line.x, line.y, line.z);
 
 
-  if (line.x*line.x+line.y*line.y >= 0 && line.x*line.x+line.y*line.y <=1369){ //37^2
-    theta[1] = acos((line.x*line.x+line.y*line.y-L1*L1-L2*L2)/(2*L1*L2));
-    float tanY = L2*sin(theta[1])/(L1+L2*cos(theta[1]));
-    theta[0] = atan((line.y-line.x*tanY)/(line.x+line.y*tanY));
-  }
-  printf("Theta1: %f, Theta2:%f\n", theta[0]/0.017453293, theta[1]/0.017453293);
+  //if (line.x*line.x+line.y*line.y >= 0 && line.x*line.x+line.y*line.y <=1369){ //37^2
+  //  theta[1] = acos((line.x*line.x+line.y*line.y-L1*L1-L2*L2)/(2*L1*L2));
+  //  float tanY = L2*sin(theta[1])/(L1+L2*cos(theta[1]));
+  //  theta[0] = atan((line.y-line.x*tanY)/(line.x+line.y*tanY));
+  //}
+
+
+  // Cinemática inversa 
+  float L3= sqrt(pow(line.x,2)+pow(line.y,2));
+  float theta = atan(line.x/line.y);
+  float phi = acos((pow(L3,2)-pow(L1,2)-pow(L2,2))/(2*L1*L3));
+  float alpha = atan((L2*sin(phi))/(L1+L2*cos(phi)));
+  float qhip = theta + alpha;
+  float qknee = phi + qhip;
+  float mhip = M_PI - qhip;
+
+  printf("Theta1: %f, Theta2:%f\n", mhip, phi);
   
-  toPic1.setPoint1 = L1*cos(theta[1]);
-  toPic1.setPoint2 = L1*sin(theta[1]);
-  toPic1.setPoint3 = 0;
-  
+  toPic1.SOT = (char)':';
+  toPic1.ADD = (char)'a';
+  toPic1.COM = (char)':';
+  toPic1.VAL = mhip / 0.0174532925; //conversão para radianos
+  toPic1.EOT = (char)';';
   xQueueSend(qCommPIC1, &toPic1, portMAX_DELAY);
   
-  toPic2.setPoint1 = L2*cos(theta[0]);
-  toPic2.setPoint2 = L2*sin(theta[0]);
-  toPic2.setPoint3 = 0;
-  
+  toPic2.SOT = (char)':';
+  toPic2.ADD = (char)'a';
+  toPic2.COM = (char)':';
+  toPic2.VAL = phi / 0.0174532925; //conversão para radianos
+  toPic2.EOT = (char)';';
   xQueueSend(qCommPIC2, &toPic2, portMAX_DELAY);
 
   currLine++;
