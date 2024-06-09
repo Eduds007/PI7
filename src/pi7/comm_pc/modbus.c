@@ -249,6 +249,7 @@ void processReadRegister() {
   int registerToRead;
   int registerValue;
   byte lrc;
+
   registerToRead  = (decode(rxBuffer[5], rxBuffer[6])<<8) + decode(rxBuffer[7], rxBuffer[8]);
   // Aciona controller para obter valor. Note que a informacao
   // ate´ poderia ser acessada diretamente. Mas a arquitetura MVC
@@ -342,7 +343,7 @@ int decodeFunctionCode() {
  Retorno:
     nenhum
 *************************************************************************/
-void processMessage() {
+void processMessage() { // OK!
   int functionCode;
   if (checkLRC()) {
     functionCode = decodeFunctionCode();
@@ -446,7 +447,7 @@ void receiveMessage() {
  Retorno:
     nenhum
 *************************************************************************/
-void com_executeCommunication() {
+void com_executeCommunication() { //OK!
   receiveMessage();
   if ( _state == MESSAGE_READY ) {
     processMessage();

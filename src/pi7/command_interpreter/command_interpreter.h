@@ -3,14 +3,20 @@
 
 #include <stdint.h>
 
-// identification of registers to read
-#define REG_X 0
-#define REG_Y 1
-#define REG_Z 2
-#define REG_LINHA 3
-
 // identification of register to write
-#define REG_START 0
+#define REG_START   0
+#define REG_PAUSE   1
+#define REG_RESUME  2
+#define REG_STOP    3
+#define REG_JOGX    4
+#define REG_JOGY    5
+#define STEP_X      6
+#define STEP_Y      7
+#define REG_X       8
+#define REG_Y       9
+#define REG_LINHA   10
+#define REG_PROG    11
+
 
 // error
 #define CTL_ERR -1

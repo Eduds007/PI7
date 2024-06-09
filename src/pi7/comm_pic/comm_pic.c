@@ -25,23 +25,21 @@
 
 void pic_init(void){
 
-  // TODO: implementar
+   uint8_t out[32];
+
+  sprintf((char*)out, "%c%c%c%f%c\n", ':', '0', 'p', 0, ';');
+  UARTSendNullTerminated(0, out);  // envia para UART 0 
+  sprintf((char*)out, "%c%c%c%f%c\n", ':', '1', 'p', 0, ';');
+  UARTSendNullTerminated(1, out);  // envia para UART 1
+   // TODO: implementar
   
 } // pic_init
 
 void pic_sendToPIC(uint8_t portNum, pic_Data data) {
   uint8_t out[32];
-
-  // Implementação de teste, envia setpoint para console e para UARTs
-	//printf("X=%5.1f Y=%5.1f Z=%5.1f\n", data.setPoint1, data.setPoint2, data.setPoint3);
   sprintf((char*)out, "%c%c%c%f%c\n", data.SOT, data.ADD, data.COM, data.VAL, data.EOT);
-  //printf("%c%c%c%f%c\n", data.SOT, data.ADD, data.COM, data.VAL, data.EOT);
-  //puts((char*)out); // envia para console
   UARTSendNullTerminated(portNum, out);  // envia também para UART 0 ou 1
   //UARTSend(portNum, out, 23); // [jo:231004] alternativa linha acima sem NULL no final
-
-  // TODO: implementar
-
 } // pic_sendToPIC
 
 extern uint8_t pic_receiveCharFromPIC(uint8_t portNum) {

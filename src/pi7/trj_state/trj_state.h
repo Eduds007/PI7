@@ -4,11 +4,11 @@
 // external interface
 extern int tst_getCurrentLine();
 extern void tst_setCurrentLine(int line);
-extern float tst_getX();
-extern float tst_getY();
-extern float tst_getZ();
-extern void tst_setX(float x);
-extern void tst_setY(float y);
-extern void tst_setZ(float z);
+extern int tst_getX();
+extern int tst_getY();
+extern int tst_getZ();
+extern void tst_setX(int x);
+extern void tst_setY(int y);
+extern void tst_setZ(int z);
 extern void tst_init();
 #endif

@@ -7,9 +7,9 @@
 #include <stdio.h>
 
 int tst_line;
-float tst_x;
-float tst_y;
-float tst_z;
+int tst_x;
+int tst_y;
+int tst_z;
 
 int tst_getCurrentLine() {
 	return tst_line;
@@ -19,15 +19,15 @@ void tst_setCurrentLine(int line) {
 	tst_line = line;
 } // tst_setCurrentLine
 
-float tst_getX() {
+int tst_getX() {
 	return tst_x;
 } // tst_getX
 
-float tst_getY() {
+int tst_getY() {
 	return tst_y;
 } // tst_getY
 
-float tst_getZ() {
+int tst_getZ() {
 	return tst_z;
 } // tst_getZ
 

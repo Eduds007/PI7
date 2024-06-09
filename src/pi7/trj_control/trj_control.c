@@ -53,7 +53,7 @@ void tcl_generateSetpoint() {
 
 
   float L3= sqrt(pow(line.x,2)+pow(line.y,2));
-  float y = 33- line.y;
+  int y = 33- line.y;
   float beta = (180/M_PI)*acos((pow(L1,2)+pow(L2,2)-pow(L3,2))/(2*L1*L2));
   float gamma=0;
   float theta=0;
