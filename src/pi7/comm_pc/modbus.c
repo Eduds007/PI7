@@ -249,7 +249,7 @@ void processReadRegister() {
   int registerToRead;
   int registerValue;
   byte lrc;
-  registerToRead = decode ( rxBuffer[7], rxBuffer[8]);
+  registerToRead  = (decode(rxBuffer[5], rxBuffer[6])<<8) + decode(rxBuffer[7], rxBuffer[8]);
   // Aciona controller para obter valor. Note que a informacao
   // ate´ poderia ser acessada diretamente. Mas a arquitetura MVC
   // exige que todas as interacoes se deem atraves do controller.
@@ -260,16 +260,22 @@ void processReadRegister() {
   txBuffer[2] = encodeLow(MY_ADDRESS);
   txBuffer[3] = encodeHigh(READ_REGISTER);
   txBuffer[4] = encodeLow(READ_REGISTER);
-  txBuffer[5] = encodeHigh(1); // byte count field  (high part)
-  txBuffer[6] = encodeLow(1);  // byte count field (low part)
-  txBuffer[7] = encodeHigh(registerValue);
-  txBuffer[8] = encodeLow(registerValue);
-  lrc = calculateLRC(txBuffer, 1, 8);
-  txBuffer[9] = encodeHigh(lrc);
-  txBuffer[10] = encodeLow(lrc);
-  txBuffer[11] = 0x0d;
-  txBuffer[12] = 0x0a;
-  txBuffer[13] = 0; // null to end as string
+  txBuffer[5] = encodeHigh(registerToRead>>8); // byte count field  (high part)
+  txBuffer[6] = encodeLow(registerToRead>>8);  // byte count field (low part)
+  txBuffer[7] = encodeHigh(registerToRead);
+  txBuffer[8] = encodeLow(registerToRead);
+
+  txBuffer[9] = encodeHigh(registerValue>>8); // byte count field  (high part)
+  txBuffer[10] = encodeLow(registerValue>>8);  // byte count field (low part)
+  txBuffer[11] = encodeHigh(registerValue);
+  txBuffer[12] = encodeLow(registerValue);
+
+  lrc = calculateLRC(txBuffer, 1, 12);
+  txBuffer[13] = encodeHigh(lrc);
+  txBuffer[14] = encodeLow(lrc);
+  txBuffer[15] = 0x0d;
+  txBuffer[16] = 0x0a;
+  txBuffer[17] = 0; // null to end as string
   //putCharToSerial(); // [jo:231005] original
   sendTxBufferToSerialUSB(); // [jo:231005] atualizado para 2024
 } // processReadRegister
