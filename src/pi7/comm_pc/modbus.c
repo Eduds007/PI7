@@ -385,37 +385,7 @@ void receiveMessage() {
   // if (ch != NO_CHAR) { // [jo:231005] original
     printf(" [%x] ", ch); // [jo:231004] teste
     if (_state == HUNTING_FOR_START_OF_MESSAGE) {
-      if (ch == 'S') {
-        rxBuffer[0] = 0x3A; // ':' começo da mensagem
-        rxBuffer[1] = 0x30; // '0' endereço 01
-        rxBuffer[2] = 0x31; // '1'
-        rxBuffer[3] = 0x30; // '0' código de função 06 (escrever em um único registrador)
-        rxBuffer[4] = 0x36; // '6'
-        rxBuffer[5] = 0x30; // '0' escreve no registrador 00 (REG_START)
-        rxBuffer[6] = 0x30; // '0'
-        rxBuffer[7] = 0x30; // '0' valor a ser escrito no registrador
-        rxBuffer[8] = 0x31; // '1'
-        rxBuffer[9] = 0x37; // '7' LRC calculado
-        rxBuffer[10] = 0x38; // '8'
-        rxBuffer[11] = 0x0D; // CR caracteres de fim de mensagem
-        rxBuffer[12] = 0x0A; // LF
-        _state = MESSAGE_READY;
-      }else if (ch == 'P') {
-        rxBuffer[0] = 0x3A; // ':'
-        rxBuffer[1] = 0x30; // '0'
-        rxBuffer[2] = 0x31; // '1'
-        rxBuffer[3] = 0x30; // '0'
-        rxBuffer[4] = 0x36; // '6'
-        rxBuffer[5] = 0x30; // '0' pause
-        rxBuffer[6] = 0x31; // '1' pause
-        rxBuffer[7] = 0x30; // '0'
-        rxBuffer[8] = 0x31; // '1'
-        rxBuffer[9] = 0x37; // '7'
-        rxBuffer[10] = 0x37; // '7'
-        rxBuffer[11] = 0x0D; // CR
-        rxBuffer[12] = 0x0A; // LF
-        _state = MESSAGE_READY;
-      }else if (ch == ':') {
+      if (ch == ':') {
         idxRxBuffer = 0;
         rxBuffer[idxRxBuffer] = ch;
         _state = HUNTING_FOR_END_OF_MESSAGE;
