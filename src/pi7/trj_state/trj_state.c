@@ -31,15 +31,15 @@ int tst_getZ() {
 	return tst_z;
 } // tst_getZ
 
-void tst_setX(float x) {
+void tst_setX(int x) {
 	tst_x = x;
 } // tst_setX
 
-void tst_setY(float y) {
+void tst_setY(int y) {
 	tst_y = y;
 } // tst_setY
 
-void tst_setZ(float z) {
+void tst_setZ(int z) {
 	tst_z = z;
 } // tst_setZ
 

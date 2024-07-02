@@ -8,7 +8,7 @@ typedef struct {
 	float z;
 } tpr_Data;
 
-extern void tpr_storeProgram(char* texto);
+extern void tpr_storeProgram(int pico_registers[], int tam);
 extern tpr_Data tpr_getLine(int line);
 extern void tpr_init();
 #endif

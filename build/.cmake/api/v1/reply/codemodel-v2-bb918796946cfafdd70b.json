@@ -1169,14 +1169,14 @@
 				{
 					"directoryIndex" : 82,
 					"id" : "ELF2UF2Build::@145eef247bfb46b6828c",
-					"jsonFile" : "target-ELF2UF2Build-Debug-2a579eb2efb07710e3ff.json",
+					"jsonFile" : "target-ELF2UF2Build-Debug-978067b5e9d2933313aa.json",
 					"name" : "ELF2UF2Build",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 67,
 					"id" : "PioasmBuild::@c2fb4f534018e64680d5",
-					"jsonFile" : "target-PioasmBuild-Debug-96a6a67e65836bfd1082.json",
+					"jsonFile" : "target-PioasmBuild-Debug-947e526c6dd49160e77f.json",
 					"name" : "PioasmBuild",
 					"projectIndex" : 2
 				},

@@ -48,8 +48,6 @@ int ctl_ReadRegister(int registerToRead) {
          return (int)tst_getX();
       case REG_Y:
          return (int)tst_getY();
-      case REG_Z:
-         return (int)tst_getZ();
       case REG_LINHA:
          return tst_getCurrentLine();
    } // switch

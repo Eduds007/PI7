@@ -18,22 +18,22 @@
 				{
 					"includeDirectories" : 
 					[
-						"/usr/lib/gcc/arm-none-eabi/13.2.0/include",
-						"/usr/lib/gcc/arm-none-eabi/13.2.0/include-fixed",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0/include",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
 						"/usr/arm-none-eabi/include"
 					],
 					"linkDirectories" : 
 					[
-						"/usr/lib/gcc/arm-none-eabi/13.2.0/thumb/v6-m/nofp",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0/thumb/v6-m/nofp",
 						"/usr/arm-none-eabi/lib/thumb/v6-m/nofp",
-						"/usr/lib/gcc/arm-none-eabi/13.2.0",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0",
 						"/usr/arm-none-eabi/lib"
 					],
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
 				"path" : "/usr/bin/arm-none-eabi-gcc",
-				"version" : "13.2.0"
+				"version" : "14.1.0"
 			},
 			"language" : "C",
 			"sourceFileExtensions" : 
@@ -50,25 +50,25 @@
 				{
 					"includeDirectories" : 
 					[
-						"/usr/arm-none-eabi/include/c++/13.2.0",
-						"/usr/arm-none-eabi/include/c++/13.2.0/arm-none-eabi/thumb/v6-m/nofp",
-						"/usr/arm-none-eabi/include/c++/13.2.0/backward",
-						"/usr/lib/gcc/arm-none-eabi/13.2.0/include",
-						"/usr/lib/gcc/arm-none-eabi/13.2.0/include-fixed",
+						"/usr/arm-none-eabi/include/c++/14.1.0",
+						"/usr/arm-none-eabi/include/c++/14.1.0/arm-none-eabi/thumb/v6-m/nofp",
+						"/usr/arm-none-eabi/include/c++/14.1.0/backward",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0/include",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0/include-fixed",
 						"/usr/arm-none-eabi/include"
 					],
 					"linkDirectories" : 
 					[
-						"/usr/lib/gcc/arm-none-eabi/13.2.0/thumb/v6-m/nofp",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0/thumb/v6-m/nofp",
 						"/usr/arm-none-eabi/lib/thumb/v6-m/nofp",
-						"/usr/lib/gcc/arm-none-eabi/13.2.0",
+						"/usr/lib/gcc/arm-none-eabi/14.1.0",
 						"/usr/arm-none-eabi/lib"
 					],
 					"linkFrameworkDirectories" : [],
 					"linkLibraries" : []
 				},
 				"path" : "/usr/bin/arm-none-eabi-g++",
-				"version" : "13.2.0"
+				"version" : "14.1.0"
 			},
 			"language" : "CXX",
 			"sourceFileExtensions" : 
