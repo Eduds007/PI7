@@ -67,7 +67,7 @@ class GCodeLexer(Lexer):
 
     literalNames = [ "<INVALID>",
             "'N'", "'M30'", "'M02'", "'M01'", "'G01'", "'G00'", "'X'", "'Y'", 
-            "'\\r'", "'\\n'", "'\\r\\n'" ]
+            "'-'", "'\\r'", "'\\n'", "'\\r\\n'" ]
 
     symbolicNames = [ "<INVALID>",
             "INT", "ID", "WS", "STRING" ]

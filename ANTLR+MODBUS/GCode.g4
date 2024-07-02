@@ -42,8 +42,8 @@ coordy
 		
 coord
     :
-    INT INT? INT?
-	;
+    '-'? INT INT? INT?
+		;
 
 fimdelinha
     :	'\r'
@@ -61,4 +61,3 @@ WS  : [ \t\n\r]+-> skip ;
 STRING
     :  '"' ( ~('\\'|'"') )* '"'
     ;
-

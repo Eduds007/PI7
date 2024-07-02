@@ -47,7 +47,7 @@ class GCodeParser ( Parser ):
     sharedContextCache = PredictionContextCache()
 
     literalNames = [ "<INVALID>", "'N'", "'M30'", "'M02'", "'M01'", "'G01'", 
-                     "'G00'", "'X'", "'Y'", "'\\r'", "'\\n'", "'\\r\\n'" ]
+                     "'G00'", "'X'", "'Y'","'-'", "'\\r'", "'\\n'", "'\\r\\n'" ]
 
     symbolicNames = [ "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 

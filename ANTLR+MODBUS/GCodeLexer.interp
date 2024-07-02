@@ -8,6 +8,7 @@ null
 'G00'
 'X'
 'Y'
+'-'
 '\r'
 '\n'
 '\r\n'
@@ -17,6 +18,7 @@ null
 null
 
 token symbolic names:
+null
 null
 null
 null
@@ -46,6 +48,7 @@ T__7
 T__8
 T__9
 T__10
+T_11
 INT
 ID
 WS
