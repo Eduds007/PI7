@@ -25,11 +25,23 @@
 
 void pic_init(void){
 
+  int k = 1;   // a acertar
+  int Td = 1;
+  int Ti = 1;
+
    uint8_t out[32];
 
-  sprintf((char*)out, "%c%c%c%d%c\n", ':', '0', 'p', 0, ';');
+  sprintf((char*)out, "%c%c%c%d%c\n", ':', 'a', 'g', k, ';');
   UARTSendNullTerminated(0, out);  // envia para UART 0 
-  sprintf((char*)out, "%c%c%c%d%c\n", ':', '1', 'p', 0, ';');
+  sprintf((char*)out, "%c%c%c%d%c\n", ':', 'b', 'g', k, ';');
+  UARTSendNullTerminated(1, out);  // envia para UART 1
+  sprintf((char*)out, "%c%c%c%d%c\n", ':', 'a', 'd', Td, ';');
+  UARTSendNullTerminated(0, out);  // envia para UART 0 
+  sprintf((char*)out, "%c%c%c%d%c\n", ':', 'b', 'd',Td , ';');
+  UARTSendNullTerminated(1, out);  // envia para UART 1
+  sprintf((char*)out, "%c%c%c%d%c\n", ':', 'a', 'i', Ti, ';');
+  UARTSendNullTerminated(0, out);  // envia para UART 0 
+  sprintf((char*)out, "%c%c%c%d%c\n", ':', 'b', 'i', Ti, ';');
   UARTSendNullTerminated(1, out);  // envia para UART 1
    // TODO: implementar
   
