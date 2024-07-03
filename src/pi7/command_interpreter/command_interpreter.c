@@ -30,22 +30,22 @@
 // communication with TrajectoryController
 extern xQueueHandle qControlCommands;
 
-int pico_registers[MAX_REGISTER_COUNT];
+int regs[MAX_REGS];
 
 void ctl_init()
 {
-   pico_registers[REG_START] = 0;
-   pico_registers[REG_PAUSE] = 0;
-   pico_registers[REG_RESUME] = 0;
-   pico_registers[REG_STOP] = 0;
-   pico_registers[REG_JOGX] = 0;
-   pico_registers[REG_JOGY] = 0;
-   pico_registers[STEP_X] = 0;
-   pico_registers[STEP_Y] = 0;
-   pico_registers[REG_X] = 0;
-   pico_registers[REG_Y] = 0;
-   pico_registers[REG_LINE] = 0;
-   pico_registers[REG_PROG] = 0;
+   regs[REG_START] = 0;
+   regs[REG_PAUSE] = 0;
+   regs[REG_RESUME] = 0;
+   regs[REG_STOP] = 0;
+   regs[REG_JOGX] = 0;
+   regs[REG_JOGY] = 0;
+   regs[STEP_X] = 0;
+   regs[STEP_Y] = 0;
+   regs[REG_X] = 0;
+   regs[REG_Y] = 0;
+   regs[REG_LINE] = 0;
+   regs[REG_PROG] = 0;
 } // ctl_init
 
 /************************************************************************
@@ -122,7 +122,7 @@ int ctl_WriteRegister(int registerToWrite, int value)
  Retorno:
     TRUE se escrita foi aceita, FALSE caso contrario.
 *************************************************************************/
-int ctl_WriteProgram(char *program_bytes)
+int ctl_WriteProgram(char* program_bytes)
 {
    return tpr_storeProgram(program_bytes);
 } // ctl_WriteRegister

@@ -7,7 +7,7 @@ typedef struct {
 	int y;
 } tpr_Data;
 
-extern void tpr_storeProgram(int pico_registers[], int tam);
+extern int tpr_storeProgram(char* program_bytes);
 extern tpr_Data tpr_getLine(int line);
 extern void tpr_init();
 #endif

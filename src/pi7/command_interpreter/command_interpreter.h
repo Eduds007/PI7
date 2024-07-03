@@ -17,13 +17,15 @@
 #define REG_LINE    10
 #define REG_PROG    11
 
+#define MAX_REGS 250
+
 
 // error
 #define CTL_ERR -1
 
 extern int ctl_ReadRegister(int registerToRead);
 extern int ctl_WriteRegister(int registerToWrite, int value);
-extern int ctl_WriteProgram(uint8_t* programBytes);
+extern int ctl_WriteProgram(char* programBytes);
 extern void ctl_init();
 
 #endif
