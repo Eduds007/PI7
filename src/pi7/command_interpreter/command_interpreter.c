@@ -28,24 +28,10 @@
 
 
 // communication with TrajectoryController
-extern xQueueHandle qControlCommands;
-
-int regs[MAX_REGS];
+extern xQueueHandle qControlCommands;  
 
 void ctl_init()
 {
-   regs[REG_START] = 0;
-   regs[REG_PAUSE] = 0;
-   regs[REG_RESUME] = 0;
-   regs[REG_STOP] = 0;
-   regs[REG_JOGX] = 0;
-   regs[REG_JOGY] = 0;
-   regs[STEP_X] = 0;
-   regs[STEP_Y] = 0;
-   regs[REG_X] = 0;
-   regs[REG_Y] = 0;
-   regs[REG_LINE] = 0;
-   regs[REG_PROG] = 0;
 } // ctl_init
 
 /************************************************************************
@@ -85,11 +71,11 @@ int ctl_WriteRegister(int registerToWrite, int value)
 {
    // TODO: implementar
    tcl_Data command;
-   printf("Register %d Value %d\n", registerToWrite, value);
+   //printf("Register %d Value %d\n", registerToWrite, value);
    switch (registerToWrite)
    {
    case REG_START:
-      printf("start program\n");
+      //printf("start program\n");
       command.command = CMD_START;
       xQueueSend(qControlCommands, &command, portMAX_DELAY);
       break;
@@ -106,7 +92,7 @@ int ctl_WriteRegister(int registerToWrite, int value)
       xQueueSend(qControlCommands, &command, portMAX_DELAY);
       break;
    default:
-      printf("unknown register to write\n");
+      //printf("unknown register to write\n");
       break;
    } // switch
    return true; // TRUE;

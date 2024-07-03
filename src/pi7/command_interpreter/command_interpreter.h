@@ -17,9 +17,6 @@
 #define REG_LINE    10
 #define REG_PROG    11
 
-#define MAX_REGS 250
-
-
 // error
 #define CTL_ERR -1
 

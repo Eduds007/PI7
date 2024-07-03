@@ -31,7 +31,6 @@ void pic_set(void){
   int Td = 1;
   int Ti = 1;
 
-  
   uint8_t out[32];
 
   sprintf((char*)out, "%c%c%c%d%c\n", ':', 'a', 'g', k, ';');
