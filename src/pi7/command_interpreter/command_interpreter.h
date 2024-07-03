@@ -14,7 +14,7 @@
 #define STEP_Y      7
 #define REG_X       8
 #define REG_Y       9
-#define REG_LINHA   10
+#define REG_LINE    10
 #define REG_PROG    11
 
 

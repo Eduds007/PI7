@@ -12,7 +12,7 @@ typedef struct {
 	char SOT;
 	char ADD;
 	char COM;
-	float VAL;
+	int VAL;
 	char EOT; 
 } pic_Data;
 

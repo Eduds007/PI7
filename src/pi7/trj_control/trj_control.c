@@ -49,7 +49,7 @@ void tcl_generateSetpoint() {
   currLine = tst_getCurrentLine();
   printf("CurrLine %d\n", currLine);
   line = tpr_getLine(currLine);
-  printf("Setpoint: %f %f %f\n", line.x, line.y, line.z);
+  printf("Setpoint: %d %d\n", line.x, line.y);
 
 
   int L3 = round(sqrt(line.x * line.x + line.y * line.y));

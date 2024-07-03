@@ -3,9 +3,8 @@
 
 
 typedef struct {
-	float x;
-	float y;
-	float z;
+	int x;
+	int y;
 } tpr_Data;
 
 extern void tpr_storeProgram(int pico_registers[], int tam);

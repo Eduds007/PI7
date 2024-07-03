@@ -4,7 +4,7 @@
  */
 
 // max NC program size
-#define MAX_PROGRAM_LINES 50
+#define MAX_PROGRAM_LINES 200
 
 #include "trj_program.h"
 #include "../command_interpreter/command_interpreter.h"
@@ -16,20 +16,19 @@
 // structure to store NC program
 tpr_Data tpr_program[MAX_PROGRAM_LINES];
 
-void tpr_storeProgram(int pico_registers[], int tam) {
+int tpr_storeProgram(char* texto) {
 
-	tpr_Data data; 
-	int line = 0;
-	for (int i = 0; i<2*MAX_PROGRAM_LINES; i= i+2) {
-		if (i>=tam){
-			break;
+	int i;
+	char* separa = strtok(texto, "-");
+
+	while (separa != NULL) {
+		if (i%2==0) {
+		tpr_program[i/2].x = (int)separa[0];
+		tpr_program[i++/2].y = (int)separa[1];	
 		}
-		data.x = pico_registers[i+REG_PROG];
-		data.y = pico_registers[i+1 + REG_PROG];
-		tpr_program[line] = data;
-		line ++;
+		separa = strtok(NULL, "-");
 	}
-  
+	return 1;
 } // tpr_storeProgram
 
 tpr_Data tpr_getLine(int line) {
@@ -40,8 +39,7 @@ void tpr_init() {
   int i;
 
   for (i=0; i<MAX_PROGRAM_LINES;i++) {
-	  tpr_program[i].x = 0;
-	  tpr_program[i].y = 0;
-	  tpr_program[i].z = 0;
+	  tpr_program[i].x = -160;
+	  tpr_program[i].y = 330;
   }
 } //tpr_init

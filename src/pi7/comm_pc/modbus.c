@@ -214,7 +214,7 @@ byte calculateLRC(byte* frame, int start, int end) {
   ff = (byte)0xff;
   um = (byte)0x01;
 
-  for (i= start; i < end; i++) {
+  for (i= start; i <= end; i++) {
     accum += frame[i];
   }
   accum = (byte) (ff - accum);
@@ -234,7 +234,7 @@ int checkLRC() {
 
   retval = false;
   receivedLRC = decode(rxBuffer[idxRxBuffer-3], rxBuffer[idxRxBuffer-2]);
-  calculatedLRC = calculateLRC(rxBuffer, 1, idxRxBuffer - 3);
+  calculatedLRC = calculateLRC(rxBuffer, 1, idxRxBuffer - 4); // modified (-3)
   printf("LCR rx=%x calc=%x \n", receivedLRC, calculatedLRC);
   if ( receivedLRC == calculatedLRC) {
     retval = true;
@@ -255,7 +255,7 @@ void processReadRegister() {
   int registerValue;
   byte lrc;
 
-  registerToRead  = (decode(rxBuffer[5], rxBuffer[6])<<8) + decode(rxBuffer[7], rxBuffer[8]);
+  registerToRead  = (decode(rxBuffer[7], rxBuffer[8]);
   // Aciona controller para obter valor. Note que a informacao
   // ate´ poderia ser acessada diretamente. Mas a arquitetura MVC
   // exige que todas as interacoes se deem atraves do controller.
@@ -266,22 +266,16 @@ void processReadRegister() {
   txBuffer[2] = encodeLow(MY_ADDRESS);
   txBuffer[3] = encodeHigh(READ_REGISTER);
   txBuffer[4] = encodeLow(READ_REGISTER);
-  txBuffer[5] = encodeHigh(registerToRead>>8); // byte count field  (high part)
-  txBuffer[6] = encodeLow(registerToRead>>8);  // byte count field (low part)
-  txBuffer[7] = encodeHigh(registerToRead);
-  txBuffer[8] = encodeLow(registerToRead);
-
-  txBuffer[9] = encodeHigh(registerValue>>8); // byte count field  (high part)
-  txBuffer[10] = encodeLow(registerValue>>8);  // byte count field (low part)
-  txBuffer[11] = encodeHigh(registerValue);
-  txBuffer[12] = encodeLow(registerValue);
-
-  lrc = calculateLRC(txBuffer, 1, 12);
-  txBuffer[13] = encodeHigh(lrc);
-  txBuffer[14] = encodeLow(lrc);
-  txBuffer[15] = 0x0d;
-  txBuffer[16] = 0x0a;
-  txBuffer[17] = 0; // null to end as string
+  txBuffer[5] = encodeHigh(1); // byte count field  (high part)
+  txBuffer[6] = encodeLow(1);  // byte count field (low part)
+  txBuffer[7] = encodeHigh(registerValue);
+  txBuffer[8] = encodeLow(registerValue);
+  lrc = calculateLRC(txBuffer, 1, 8); // modified
+  txBuffer[9] = encodeHigh(lrc);
+  txBuffer[10] = encodeLow(lrc);
+  txBuffer[11] = 0x0d;
+  txBuffer[12] = 0x0a;
+  txBuffer[13] = 0; // null to end as string
   //putCharToSerial(); // [jo:231005] original
   sendTxBufferToSerialUSB(); // [jo:231005] atualizado para 2024
 } // processReadRegister
@@ -291,8 +285,8 @@ void processWriteRegister() {
   int registerValue;
   byte lrc;
 
-  registerToWrite = (decode(rxBuffer[5], rxBuffer[6])<<8) + decode(rxBuffer[7], rxBuffer[8]);
-  registerValue = (decode(rxBuffer[9], rxBuffer[10])<<8 )+ decode(rxBuffer[11], rxBuffer[12]);
+  registerToWrite = decode(rxBuffer[5], rxBuffer[6]);
+  registerValue = decode(rxBuffer[7], rxBuffer[8]);
 
   // Aciona controller porque a arquitetura MVC
   // exige que todas as interacoes se deem atraves do controller.
@@ -304,22 +298,18 @@ void processWriteRegister() {
   txBuffer[2] = encodeLow(MY_ADDRESS);
   txBuffer[3] = encodeHigh(WRITE_REGISTER);
   txBuffer[4] = encodeLow(WRITE_REGISTER);
-  txBuffer[5] = encodeHigh(registerToWrite>>8); // byte count field  (high part)
-  txBuffer[6] = encodeLow(registerToWrite>>8);  // byte count field (low part)
+  txBuffer[5] = encodeHigh(1); // byte count field  (high part)
+  txBuffer[6] = encodeLow(1);  // byte count field (low part)
   txBuffer[7] = encodeHigh(registerToWrite);
   txBuffer[8] = encodeLow(registerToWrite);
-  
-  txBuffer[9] = encodeHigh(registerValue>>8);
-  txBuffer[10] = encodeLow(registerValue>>8);
-  txBuffer[11] = encodeHigh(registerValue);
-  txBuffer[12] = encodeLow(registerValue);
-
-  lrc = calculateLRC(txBuffer, 1, 12);
-  txBuffer[13] = encodeHigh(lrc);
-  txBuffer[14] = encodeLow(lrc);
-  txBuffer[15] = 0x0d;
-  txBuffer[16] = 0x0a;
-  txBuffer[17] = 0; // null to end as string
+  txBuffer[9] = encodeHigh(registerValue);
+  txBuffer[10] = encodeLow(registerValue);
+  lrc = calculateLRC(txBuffer, 1, 10); // modified
+  txBuffer[11] = encodeHigh(lrc);
+  txBuffer[12] = encodeLow(lrc);
+  txBuffer[13] = 0x0d;
+  txBuffer[14] = 0x0a;
+  txBuffer[15] = 0; // null to end as string
   //putCharToSerial(); // [jo:231005] original
   sendTxBufferToSerialUSB(); // [jo:231005] atualizado para 2024
 } // processWriteRegister
@@ -327,27 +317,20 @@ void processWriteRegister() {
 void processWriteFile() {
 	// TODO: implementar
   int n = decode(rxBuffer[5], rxBuffer[6]);
-  char pontos[n*(12+3) +1];
+  char pontos[n*(6+2) +1];
   byte lrc;
   int check = false;
 
   for (int i = 0; i < n; i++) {
       // Copia as coordenadas X, Y, Z de cada ponto para pontos
-    pontos[0 + 15*i] = rxBuffer[7 + i*12];
-    pontos[1 + 15*i] = rxBuffer[8 + i*12];
-    pontos[2 + 15*i] = rxBuffer[9 + i*12];
-    pontos[3 + 15*i] = rxBuffer[10 + i*12];
-    pontos[4 + 15*i] = ',';
-    pontos[5 + 15*i] = rxBuffer[11 + i*12];
-    pontos[6 + 15*i] = rxBuffer[12 + i*12];
-    pontos[7 + 15*i] = rxBuffer[13 + i*12];
-    pontos[8 + 15*i] = rxBuffer[14 + i*12];
-    pontos[9 + 15*i] = ',';
-    pontos[10 + 15*i] = rxBuffer[15 + i*12];
-    pontos[11 + 15*i] = rxBuffer[16 + i*12];
-    pontos[12 + 15*i] = rxBuffer[17 + i*12];
-    pontos[13 + 15*i] = rxBuffer[18 + i*12];
-    pontos[14 + 15*i] = ',';
+    pontos[0 + 15*i] = rxBuffer[7 + i*6];
+    pontos[1 + 15*i] = rxBuffer[8 + i*6];
+    pontos[2 + 15*i] = rxBuffer[9 + i*6];
+    pontos[4 + 15*i] = '-';
+    pontos[5 + 15*i] = rxBuffer[11 + i*6];
+    pontos[6 + 15*i] = rxBuffer[12 + i*6];
+    pontos[7 + 15*i] = rxBuffer[13 + i*6];
+    pontos[9 + 15*i] = '-';
   }
 
   check = ctl_WriteProgram(pontos);
@@ -362,7 +345,7 @@ void processWriteFile() {
   txBuffer[6] = encodeLow(1);  // Byte count field (parte baixa)
   txBuffer[7] = encodeHigh(check);
   txBuffer[8] = encodeLow(check);
-  lrc = calculateLRC(txBuffer, 1, 9); // Calcula o LRC para os bytes de 1 a 9
+  lrc = calculateLRC(txBuffer, 1, 8); // Calcula o LRC para os bytes de 1 a 9
   txBuffer[9] = encodeHigh(lrc);
   txBuffer[10] = encodeLow(lrc);
   txBuffer[11] = 0x0d; // Caractere CR (retorno de carro)
