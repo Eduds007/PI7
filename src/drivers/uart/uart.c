@@ -433,28 +433,31 @@ void UARTSendNullTerminated( uint8_t portNum, uint8_t *BufferPtr) {
 
   if ( portNum == 0 ) { // UART0
     // while (!(UART0TxEmpty & 0x01)); // [jo:231004] não entendi, vou deixar assim por enquanto
-    uart_puts(uart0, (char*)BufferPtr); // [jo:231004] funciona assim
+    //uart_puts(uart0, (char*)BufferPtr); // [jo:231004] funciona assim
     // UART0TxEmpty = 0;	/* not empty in the THR until it shifts out */
-    // while ( *BufferPtr != 0 ) {
+     while ( *BufferPtr != 0 ) {
     //   /* THRE status, contain valid data */
     //   while (!(UART0TxEmpty & 0x01)); // [jo:231004] não entendi
     //   // LPC_UART0->THR = *BufferPtr;
-    //   uart_putc_raw(uart0, *BufferPtr);
+       uart_putc_raw(uart0, *BufferPtr);
     //   UART0TxEmpty = 0;	/* not empty in the THR until it shifts out */
     //   BufferPtr++;
-    // }
+    cyw43_delay_ms(5);
+   }
   } else { // UART1
     //while (!(UART1TxEmpty & 0x01)); // [jo:231004] não entendi, vou deixar assim por enquanto
-    uart_puts(uart1, (char*)BufferPtr); // [jo:231004] funciona assim
+    //uart_puts(uart1, (char*)BufferPtr); // [jo:231004] funciona assim
     //UART1TxEmpty = 0;	/* not empty in the THR until it shifts out */
-    // while ( *BufferPtr != 0 ) {
+    while ( *BufferPtr != 0 ) {
     //   /* THRE status, contain valid data */
     //   while ( !(UART1TxEmpty & 0x01) ); // [jo:231004] não entendi
     //   //LPC_UART1->THR = *BufferPtr;
-    //   uart_putc_raw(uart1, *BufferPtr);
+       uart_putc_raw(uart1, *BufferPtr);
     //   UART1TxEmpty = 0;	/* not empty in the THR until it shifts out */
-    //   BufferPtr++;
-    //   }
+       BufferPtr++;
+    cyw43_delay_ms(5);
+      
+    }
   }
   return;
 }

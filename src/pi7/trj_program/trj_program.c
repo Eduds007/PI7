@@ -36,9 +36,7 @@ tpr_Data tpr_getLine(int line) {
 } // tpr_getLine
 
 void tpr_init() {
-  int i;
-
-  for (i=0; i<MAX_PROGRAM_LINES;i++) {
+  for (int i=0; i<MAX_PROGRAM_LINES;i++) {
 	  tpr_program[i].x = -160;
 	  tpr_program[i].y = 330;
   }
