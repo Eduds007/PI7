@@ -105,7 +105,7 @@ void tcl_processCommand(tcl_Data data) {
   }
 
   if ((data.command == CMD_START) || (data.command == CMD_RESUME)) {
-    printf("starting trajectory\n");
+    //printf("starting trajectory\n");
     tcl_status = STATUS_RUNNING;
   }
 
@@ -116,8 +116,8 @@ void tcl_processCommand(tcl_Data data) {
 } // trj_executeCommand
 
 void tcl_init() {
-  // tcl_status = STATUS_NOT_RUNNING;
-  tcl_Data start;
-  start.command = CMD_START;
-  xQueueSend(qControlCommands, &start, portMAX_DELAY);
+   tcl_status = STATUS_NOT_RUNNING;
+  // tcl_Data start;
+  // start.command = CMD_START;
+  // xQueueSend(qControlCommands, &start, portMAX_DELAY);
 } // init
