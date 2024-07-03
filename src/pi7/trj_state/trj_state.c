@@ -9,7 +9,6 @@
 int tst_line;
 int tst_x;
 int tst_y;
-int tst_z;
 
 int tst_getCurrentLine() {
 	return tst_line;
@@ -27,10 +26,6 @@ int tst_getY() {
 	return tst_y;
 } // tst_getY
 
-int tst_getZ() {
-	return tst_z;
-} // tst_getZ
-
 void tst_setX(int x) {
 	tst_x = x;
 } // tst_setX
@@ -38,10 +33,6 @@ void tst_setX(int x) {
 void tst_setY(int y) {
 	tst_y = y;
 } // tst_setY
-
-void tst_setZ(int z) {
-	tst_z = z;
-} // tst_setZ
 
 void tst_init() {
 } // tst_init
