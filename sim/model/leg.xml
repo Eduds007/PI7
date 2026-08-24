@@ -1,0 +1,45 @@
+<mujoco model="pi7_leg">
+  <option timestep="0.002" integrator="implicitfast" gravity="0 0 -9.81"/>
+
+  <visual>
+    <global offwidth="1280" offheight="720"/>
+  </visual>
+
+  <asset>
+    <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="512"/>
+    <texture name="grid" type="2d" builtin="checker" rgb1="0.2 0.2 0.2" rgb2="0.3 0.3 0.3" width="300" height="300"/>
+    <material name="grid_mat" texture="grid" texrepeat="6 6" reflectance="0.1"/>
+  </asset>
+
+  <worldbody>
+    <light pos="0 0 2" dir="0 0 -1" diffuse="0.8 0.8 0.8"/>
+
+    <geom name="ground" type="plane" size="1 1 0.05" pos="0 0 0" material="grid_mat"/>
+
+    <!-- obstaculo sob o pico real do arco (replay cinematico puro dos 27 pontos:
+         pe chega a ~156mm de altura perto de x=-28mm); posicao/tamanho conferidos
+         contra a trajetoria com PID para nao haver colisao (ver sim/README.md) -->
+    <geom name="obstacle" type="box" pos="0.007 0 0.025" size="0.052 0.08 0.025" rgba="0.8 0.3 0.1 1"/>
+
+    <!-- quadril fixo no espaco, como na bancada real: so coxa e canela se movem -->
+    <body name="thigh" pos="0 0 0.45">
+      <joint name="hip" type="hinge" axis="0 1 0" pos="0 0 0" range="0 120" limited="true" damping="1.0"/>
+      <geom name="thigh_geom" type="capsule" fromto="0 0 0  0.21 0 0" size="0.012" rgba="0.2 0.4 0.8 1"/>
+      <inertial pos="0.105 0 0" mass="0.35" diaginertia="0.000025 0.00129 0.00129"/>
+
+      <body name="shank" pos="0.21 0 0">
+        <joint name="knee" type="hinge" axis="0 1 0" pos="0 0 0" range="0 130" limited="true" damping="1.0"/>
+        <geom name="shank_geom" type="capsule" fromto="0 0 0  0.247 0 0" size="0.010" rgba="0.3 0.5 0.9 1"/>
+        <inertial pos="0.1235 0 0" mass="0.20" diaginertia="0.00001 0.00102 0.00102"/>
+        <geom name="foot" type="sphere" pos="0.247 0 0" size="0.012" friction="1.0 0.005 0.0001" rgba="0.9 0.2 0.2 1"/>
+      </body>
+    </body>
+  </worldbody>
+
+  <actuator>
+    <!-- torque puro (nao <position>): o PID e explicito, escrito em sim/src/pid.c,
+         portado do controlador real que rodava no PIC (pidx.X/pidx.X/pid.c) -->
+    <motor name="hip_motor" joint="hip" gear="1" ctrlrange="-3 3" ctrllimited="true"/>
+    <motor name="knee_motor" joint="knee" gear="1" ctrlrange="-2 2" ctrllimited="true"/>
+  </actuator>
+</mujoco>
