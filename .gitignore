@@ -4,3 +4,5 @@ venv/
 .vscode/
 testeRasp/
 testes/
+sim/third_party/
+.DS_Store
